@@ -1,15 +1,14 @@
 package com.silvinomarcelino.workshopmongo.domain;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.silvinomarcelino.workshopmongo.dto.AuthorDTO;
 import com.silvinomarcelino.workshopmongo.dto.CommentDTO;
 
@@ -20,8 +19,7 @@ public class Post implements Serializable{
 
 	@Id
 	private String id;
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
-	private Instant date;
+	private Date date;
 	private String title;
 	private String body;
 	private AuthorDTO author;
@@ -31,7 +29,7 @@ public class Post implements Serializable{
 	public Post() {
 	}
 
-	public Post(String id, Instant date, String title, String body, AuthorDTO author) {
+	public Post(String id, Date date, String title, String body, AuthorDTO author) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -48,11 +46,11 @@ public class Post implements Serializable{
 		this.id = id;
 	}
 
-	public Instant getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(Instant date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
